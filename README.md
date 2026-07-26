@@ -66,14 +66,6 @@ ribbon cable.
 
 ---
 
-## Assembled boards and stencil
-
-![Laser-etched stencil with finished boards and parts](pics/pcb-stencil-components.jpeg)
-
-The finished boards with solder mask and silkscreen, next to the stainless steel paste
-stencil cut on the xTool fiber laser. Alongside are the CNC Tech 2x5 1.27 mm shrouded box
-headers and the JST-SH 3-pin vertical receptacles.
-
 ## Etched copper — trace check
 
 ![Backlit etched board showing the copper traces](pics/pcb-etched-tracecheck.JPG)
