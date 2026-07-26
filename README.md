@@ -115,6 +115,41 @@ probe-rs run --chip RP2350 target.elf
 openocd -f interface/cmsis-dap.cfg -f target/rp2350.cfg -c "adapter speed 5000"
 ```
 
+### A real session
+
+Connecting to the Adafruit Metro M0 Express in the photo above, through this adapter:
+
+```console
+$ openocd -f interface/cmsis-dap.cfg -f target/at91samdXX.cfg \
+    -c "adapter speed 400" -c "init; reset halt; flash probe 0; targets; shutdown"
+
+Open On-Chip Debugger 0.12.0
+adapter speed: 400 kHz
+
+Info : Using CMSIS-DAPv2 interface with VID:PID=0x2e8a:0x000c, serial=E6614103E7687D25
+Info : CMSIS-DAP: SWD supported
+Info : CMSIS-DAP: FW Version = 2.0.0
+Info : CMSIS-DAP: Interface Initialised (SWD)
+Info : CMSIS-DAP: Interface ready
+Info : clock speed 400 kHz
+Info : SWD DPIDR 0x0bc11477
+Info : [at91samd.cpu] Cortex-M0+ r0p1 processor detected
+Info : [at91samd.cpu] target has 4 breakpoints, 2 watchpoints
+Info : starting gdb server for at91samd.cpu on 3333
+Info : Listening on port 3333 for gdb connections
+[at91samd.cpu] halted due to debug-request, current mode: Thread
+xPSR: 0x71000000 pc: 0x00000264 msp: 0x20002de0
+Info : SAMD MCU: SAMD21G18A (256KB Flash, 32KB RAM)
+shutdown command invoked
+```
+
+`SWD DPIDR 0x0bc11477` is the handshake landing. After that the probe halts the core and
+reads the chip back as a SAMD21G18A, which is the part on the Metro M0.
+
+The Debug Probe does not power the target, so bring the target up on its own supply and leave
+it powered before starting OpenOCD. A target that is off gives
+`Error: Error connecting DP: cannot read IDR`.
+
 ---
 
 ## License
