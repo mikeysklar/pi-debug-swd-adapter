@@ -2,7 +2,20 @@
 
 # pi-debug-swd-adapter
 
-A passive adapter that connects the $12 Raspberry Pi Debug Probe to a standard 2x5 SWD connector.
+Connects the $12 Raspberry Pi Debug Probe to a standard 2x5 SWD connector.
+
+## How it was made
+
+Voice dictated to Claude, which sourced the parts and wrote out the KiCad 
+schematic and PCB board file. No MCP server, no skill, no reference 
+design.
+
+See [`CLAUDE.md`](CLAUDE.md) for what it was used. This file represents the on-going changes I had Claude 
+make after the first pass.
+
+Fabrication: a [Bantam CNC](https://www.bantamtools.com/) to cut the single sided PCB blanks, 
+and an xTool F1 Ultra fiber laser to etch, silkscreen, and expose the pads under a green 
+resin layer was applied. The steel business card stencil was cut on the same laser.
 
 ## About
 
@@ -13,38 +26,6 @@ The [Raspberry Pi Debug Probe](https://www.raspberrypi.com/products/debug-probe/
 No active parts — just three signals and a ground pour on a 26.6 × 11 mm single-sided board.
 
 Design files are in [`kicad/`](kicad/).
-
-### How it was made
-
-The idea was dictated to Claude, which wrote the KiCad schematic and PCB out as raw
-s-expression files — no MCP server, no skill, no reference design — and sourced the parts.
-See [`CLAUDE.md`](CLAUDE.md) for what it was actually asked to do.
-
-I did the fabrication: a [Bantam CNC](https://www.bantamtools.com/) to cut the blanks, and
-an xTool fiber laser to etch, silkscreen, and expose the mask over a manual resin layer.
-The steel stencil was cut on the same laser.
-
-## Pinout
-
-| Debug Probe "D" (J1) | Cortex Debug 2x5 (J2) |
-|---|---|
-| 1 — SC | 4 — SWCLK |
-| 2 — GND | 3, 5 — GND |
-| 3 — SD | 2 — SWDIO |
-
-Everything else on J2 is left unconnected. Use the **"D"** port on the probe, not "U".
-
-## Using it
-
-The Debug Probe shows up as CMSIS-DAP, so no special driver is needed.
-
-```bash
-probe-rs run --chip RP2350 target.elf
-```
-
-```bash
-openocd -f interface/cmsis-dap.cfg -f target/rp2350.cfg -c "adapter speed 5000"
-```
 
 ---
 
@@ -97,6 +78,30 @@ Designed in [KiCad](https://www.kicad.org/) 9. The project lives in [`kicad/`](k
 | J2 | CNC Tech `3220-10-0300-00` | 2x5 1.27 mm shrouded SWD box header, SMT |
 
 Plus two M2.5 screws and a 2x5 1.27 mm ribbon cable.
+
+## Pinout
+
+| Debug Probe "D" (J1) | Cortex Debug 2x5 (J2) |
+|---|---|
+| 1 — SC | 4 — SWCLK |
+| 2 — GND | 3, 5 — GND |
+| 3 — SD | 2 — SWDIO |
+
+Everything else on J2 is left unconnected. Use the **"D"** port on the probe, not "U".
+
+## Using it
+
+The Debug Probe shows up as CMSIS-DAP, so no special driver is needed.
+
+```bash
+probe-rs run --chip RP2350 target.elf
+```
+
+```bash
+openocd -f interface/cmsis-dap.cfg -f target/rp2350.cfg -c "adapter speed 5000"
+```
+
+---
 
 ## License
 
