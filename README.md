@@ -105,19 +105,8 @@ Everything else on J2 is left unconnected. Use the **"D"** port on the probe, no
 
 ## Using it
 
-The Debug Probe shows up as CMSIS-DAP, so no special driver is needed.
-
-```bash
-probe-rs run --chip RP2350 target.elf
-```
-
-```bash
-openocd -f interface/cmsis-dap.cfg -f target/rp2350.cfg -c "adapter speed 5000"
-```
-
-### A real session
-
-Connecting to the Adafruit Metro M0 Express in the photo above, through this adapter:
+The Debug Probe shows up as CMSIS-DAP, so no special driver is needed. Connecting to the
+Adafruit Metro M0 Express in the photo above, through this adapter:
 
 ```console
 $ openocd -f interface/cmsis-dap.cfg -f target/at91samdXX.cfg \
