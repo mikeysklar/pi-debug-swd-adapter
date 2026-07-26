@@ -29,19 +29,6 @@ Design files are in [`kicad/`](kicad/).
 
 ---
 
-## Etched copper — trace check
-
-![Backlit etched board showing the copper traces](pics/pcb-etched-tracecheck.JPG)
-
-A freshly etched board held up to a light to check the traces. All copper is on one side —
-no vias.
-
-## CNC-cut blank
-
-![Blank copper-clad PCB cut on the Bantam CNC](pics/pcb-blank.JPG)
-
-The raw blank milled on the Bantam CNC, with rounded corners and two M2.5 mounting holes.
-
 ## KiCad 3D render
 
 ![KiCad 3D render of the assembled board](pics/pcb-3d.png)
@@ -54,6 +41,19 @@ What the board was supposed to look like before any copper got cut.
 
 The original layout, and the oldest artifact here. The board name is set in copper so it
 etches as readable text.
+
+## Etched copper — trace check
+
+![Backlit etched board showing the copper traces](pics/pcb-etched-tracecheck.JPG)
+
+A freshly etched board held up to a light to check the traces. All copper is on one side —
+no vias.
+
+## CNC-cut blank
+
+![Blank copper-clad PCB cut on the Bantam CNC](pics/pcb-blank.JPG)
+
+The raw blank milled on the Bantam CNC, with rounded corners and two M2.5 mounting holes.
 
 ---
 
