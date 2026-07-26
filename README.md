@@ -29,6 +29,20 @@ Design files are in [`kicad/`](kicad/).
 
 ---
 
+## Assembled board
+
+![Assembled adapter with both connectors soldered](pics/pcb-asm.JPG)
+
+The finished prototype, backlit. Both connectors reflowed onto the laser-exposed pads, with
+the copper silkscreen and board name still readable through the green resin.
+
+## Working debugger setup
+
+![Adapter connecting a Raspberry Pi Debug Probe to an Adafruit Metro M0 Express](pics/hookup.jpeg)
+
+The whole chain in use: Debug Probe on the left, its 3-pin JST-SH lead into the adapter at
+bottom right, and a 2x5 1.27 mm ribbon up to the SWD header on an Adafruit Metro M0 Express.
+
 ## KiCad 3D render
 
 ![KiCad 3D render of the assembled board](pics/pcb-3d.png)
